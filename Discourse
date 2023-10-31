@@ -1,0 +1,22 @@
+class DiscourseNode:
+    def __init__(self, text):
+        self.text = text
+        self.children = []
+
+    def add_child(self, child_node):
+        self.children.append(child_node)
+
+    def __str__(self):
+        result = self.text
+        if self.children:
+            child_str = " -> ".join(str(child) for child in self.children)
+            result += f" -> ({child_str})"
+        return result
+
+sentences = ["ram the manager of abc company (s1)", "saw his friends shyam at a shop (s2)"]
+
+root = DiscourseNode("Discourse Root")
+root.add_child(DiscourseNode(sentences[0]))
+root.children[0].add_child(DiscourseNode(sentences[1]))
+
+print(root)
