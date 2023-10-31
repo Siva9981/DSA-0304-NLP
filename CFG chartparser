@@ -1,0 +1,25 @@
+import nltk
+from nltk import CFG, ChartParser
+
+# Define a simple CFG for sentence parsing
+cfg = CFG.fromstring("""
+    S -> NP VP
+    NP -> N | Det N
+    VP -> V NP
+    Det -> 'The' | 'a'
+    N -> 'dogs' | 'loyal'
+    V -> 'are'
+""")
+
+# Create a Chart Parser based on the CFG
+parser = ChartParser(cfg)
+
+# Define a sentence to parse
+sentence = "The dogs are loyal"
+
+# Tokenize the sentence
+tokens = sentence.split()
+
+# Parse the sentence and print the parse tree
+for tree in parser.parse(tokens):
+    tree.pretty_print()
