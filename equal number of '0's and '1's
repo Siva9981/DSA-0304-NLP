@@ -1,0 +1,22 @@
+def is_equal_01(string):
+    """
+    Check if the given string has an equal number of '0's and '1's using a finite state automaton.
+    """
+    state = 0  
+    for char in string:
+        if char == '0':
+            state = 1 - state  
+        elif char == '1':
+            state = 1 - state  
+        else:
+            return False  
+
+    return state == 0  
+
+if __name__ == "__main__":
+
+    test_strings = ["0011", "010101", "1100", "101", "000111", "010", "11011", "101010"]
+    
+    for test_string in test_strings:
+        result = is_equal_01(test_string)
+        print(f"{test_string}: {'Accepted' if result else 'Rejected'}")
