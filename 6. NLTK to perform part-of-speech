@@ -1,0 +1,20 @@
+import nltk
+from nltk.tokenize import word_tokenize
+
+def pos_tagging(text):
+    words = word_tokenize(text)
+
+    pos_tags = nltk.pos_tag(words)
+
+    return pos_tags
+
+text1 = "The sun is shining brightly."
+text2 = "I love reading interesting books."
+pos_tags1 = pos_tagging(text1)
+pos_tags2 = pos_tagging(text2)
+
+print("Part-of-Speech Tagging for Text 1:")
+print(pos_tags1)
+
+print("\nPart-of-Speech Tagging for Text 2:")
+print(pos_tags2)
